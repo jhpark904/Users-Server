@@ -5,7 +5,6 @@ const fs = require("lowdb/adapters/FileSync");
 const adapter = new fs("db.json");
 const db = low(adapter);
 const cors = require("cors");
-const { faker } = require("@faker-js/faker");
 
 // allow cross-origin resource sharing (CORS)
 app.use(cors());
@@ -42,7 +41,6 @@ app.post("/add", function (req, res) {
     citystatezip: req.body.citystatezip,
     latitude: req.body.latitude,
     longitude: req.body.longitude,
-    avatar: faker.internet.avatar(),
   };
   db.get("users").push(user).write();
   console.log(db.get("users").value());
